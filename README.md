@@ -8,6 +8,13 @@ In the project directory, you can run:
 
 ### `yarn start`
 
+#### Important! Specify GitHub Access Token
+Specify GitHub Access Token using environment variable `REACT_APP_GITHUB_TOKEN`:
+
+```
+REACT_APP_GITHUB_TOKEN=your-github-access-token yarn start
+```
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
