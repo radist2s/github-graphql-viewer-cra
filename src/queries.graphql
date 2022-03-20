@@ -1,0 +1,44 @@
+query SearchRepositories($query: String!) {
+  search(query: $query, type: REPOSITORY, first: 10) {
+    repositoryCount
+    edges {
+      node {
+        ... on Repository {
+          owner {
+            login
+          }
+          name
+          description
+        }
+      }
+    }
+  }
+}
+
+query GetRepositoryTree($name: String!, $owner: String!, $expression: String!) {
+  repository(name: $name, owner: $owner) {
+    owner {
+      login
+    }
+    name
+    object(expression: $expression) {
+      ... on Tree {
+        entries {
+          name
+          path
+          type
+        }
+      }
+    }
+  }
+}
+
+query GetRepositoryBlob($name: String!, $owner: String!, $expression: String!) {
+  repository(name: $name, owner: $owner) {
+    object(expression: $expression) {
+      ... on Blob {
+        text
+      }
+    }
+  }
+}
